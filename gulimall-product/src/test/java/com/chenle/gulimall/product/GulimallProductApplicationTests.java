@@ -1,9 +1,11 @@
 package com.chenle.gulimall.product;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.chenle.gulimall.product.dao.AttrGroupDao;
 import com.chenle.gulimall.product.entity.BrandEntity;
 import com.chenle.gulimall.product.service.BrandService;
 import com.chenle.gulimall.product.service.CategoryService;
+import com.chenle.gulimall.product.vo.SpuItemAttrGroupVo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +39,8 @@ public class GulimallProductApplicationTests {
     StringRedisTemplate stringRedisTemplate;
 
     @Autowired
+    AttrGroupDao attrGroupDao;
+    @Autowired
     RedissonClient redissonClient;
 
     @Test
@@ -44,6 +48,13 @@ public class GulimallProductApplicationTests {
         System.out.println(redissonClient);
     }
 
+
+    @Test
+    public void test() {
+
+        List<SpuItemAttrGroupVo> attrGroupWithAttrsBySpuId = attrGroupDao.getAttrGroupWithAttrsBySpuId(13L, 225L);
+        System.out.println(attrGroupWithAttrsBySpuId);
+    }
     @Test
     public void testRedis() {
         ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
