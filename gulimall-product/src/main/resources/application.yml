@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: gulimall-product
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #MySQL配置
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://1.12.44.228:3306/gulimall_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: chenle2020
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    alicloud:
+      access-key: LTAI5tRpWutP7Kdvw3ZKdRez
+      secret-key: KYFqX3J2zDw8suaAIMZvxObgIVMYSA
+      oss:
+        endpoint: oss-cn-shanghai.aliyuncs.com
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  thymeleaf:
+    cache: false
+  mvc:
+    static-path-pattern: /static/**
+  redis:
+    host: 1.12.44.228
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+server:
+  port: 10001
+logging:
+  level:
+    com.chenle.gulimall: error
