@@ -2,6 +2,7 @@ package com.chenle.gulimall.thirdparty;
 
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
+import com.chenle.gulimall.thirdparty.component.QQMailComponent;
 import com.netflix.client.ClientException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -18,6 +20,16 @@ public class GulimallThirdPartyApplicationTests {
 
     @Autowired
     OSSClient ossClient;
+
+    @Resource
+    QQMailComponent qqMailComponent;
+
+
+    @Test
+    public void testEmaial() throws FileNotFoundException {
+       qqMailComponent.sendSimpleMail("18313876850","543210");
+    }
+
 
     @Test
     public void testUpload() throws FileNotFoundException {

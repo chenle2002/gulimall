@@ -44,6 +44,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 
@@ -78,8 +79,6 @@ public class MallSearchServiceImpl implements MallSearchService {
 
         return result;
     }
-
-
 
     /**
      * 准备检索请求
@@ -177,7 +176,7 @@ public class MallSearchServiceImpl implements MallSearchService {
         }
 
         //分页
-        searchSourceBuilder.from((param.getPageNum()-1)*EsConstant.PRODUCT_PAGESIZE);
+        searchSourceBuilder.from((param.getPageNum()-1)* EsConstant.PRODUCT_PAGESIZE);
         searchSourceBuilder.size(EsConstant.PRODUCT_PAGESIZE);
 
         //高亮
@@ -243,7 +242,7 @@ public class MallSearchServiceImpl implements MallSearchService {
      * @param response
      * @return
      */
-    private SearchResult buildSearchResult(SearchResponse response,SearchParam param) {
+    private SearchResult buildSearchResult(SearchResponse response, SearchParam param) {
 
         SearchResult result = new SearchResult();
 
@@ -395,4 +394,5 @@ public class MallSearchServiceImpl implements MallSearchService {
 
         return result;
     }
+
 }
